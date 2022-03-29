@@ -17,6 +17,22 @@ const [team, setTeam] = useState([]);
 const [formValues, setFormValues] = useState(initialFormValues);
 const [formError, setFormError] = useState("");
 
+const updateForm = (inputName, inputValue) => {
+  setFormValues({...formValues, [inputName]: inputValue});
+}
+
+const submitForm = () => {
+  const newMember = {
+    name: formValues.name.trim(),
+    email: formValues.email.trim(),
+    role: formValues.role
+  }
+
+  if (!newMember.name || !newMember.email || !newMember.role) {
+    setFormError('Enter All Fields!');
+    return;
+  }
+}
 
 
 
@@ -25,6 +41,8 @@ const [formError, setFormError] = useState("");
       <h1>Team Builder</h1>
       <TeamForm
         values={formValues}
+        update={updateForm}
+        submit={submitForm}
       />
     </div>
   );

@@ -1,14 +1,14 @@
 import React from "react";
 
 export default function TeamForm(props) {
-    const { values, updates, submit } = props
+    const { values, update, submit } = props
 
     const onChange = evt => {
         
         const name = evt.target.name;
         const { value } = evt.target;
 
-        updates(name, value);
+        update(name, value);
     }
 
     const onSubmit = evt => {
