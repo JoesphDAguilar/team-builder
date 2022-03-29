@@ -1,7 +1,14 @@
+import React, {useState} from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
+import TeamForm from './Form';
+
 function App() {
+const [teamList, setTeamList] = useState([]);
+
+
   return (
     <div className="App">
       <header className="App-header">
