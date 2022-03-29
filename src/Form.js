@@ -23,7 +23,7 @@ export default function TeamForm(props) {
                 <label>Name
                     <input
                         name="name"
-                        value={values.username}
+                        value={values.name}
                         placeholder="Type Your Name"
                         maxLength="30"
                         onChange={onChange}

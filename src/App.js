@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 
-import logo from './logo.svg';
 import './App.css';
 
 import TeamForm from './Form';
@@ -13,37 +12,47 @@ const initialFormValues = {
 
 function App() {
 const [team, setTeam] = useState([]);
-
-const [formValues, setFormValues] = useState(initialFormValues);
+const [values, setValues] = useState({name: "", email: "", role: ""})
 const [formError, setFormError] = useState("");
 
-const updateForm = (inputName, inputValue) => {
-  setFormValues({...formValues, [inputName]: inputValue});
-}
+const onSubmit = () => {
 
-const submitForm = () => {
   const newMember = {
-    name: formValues.name.trim(),
-    email: formValues.email.trim(),
-    role: formValues.role
+    name: values.name.trim(),
+    email: values.email.trim(),
+    role: values.role
   }
 
   if (!newMember.name || !newMember.email || !newMember.role) {
-    setFormError('Enter All Fields!');
+    setFormError("Enter All Data For All Fields!");
     return;
   }
+
+  setTeam([values, ...team]);
+  setValues({name: "", email: "", role: ""});
+  setFormError('')
 }
 
-
+const onChange = (name, value) => {
+  setValues({...values, [name]: value})
+}
 
   return (
     <div className="App">
       <h1>Team Builder</h1>
+      { formError && <p className='error'>{formError}</p> }
       <TeamForm
-        values={formValues}
-        update={updateForm}
-        submit={submitForm}
+        values={values}
+        update={onChange}
+        submit={onSubmit}
       />
+      {team.map((member, idx)=> {
+        return (
+          <div key={idx}>
+            {member.name}, {member.email}, {member.role}
+          </div>
+        )
+      })}
     </div>
   );
 }
