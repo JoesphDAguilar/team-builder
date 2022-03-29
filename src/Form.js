@@ -20,11 +20,11 @@ export default function TeamForm(props) {
         <form onSubmit={onSubmit}>
             <div>
 
-                <label>Username
+                <label>Name
                     <input
-                        name="username"
+                        name="name"
                         value={values.username}
-                        placeholder="Type A Username"
+                        placeholder="Type Your Name"
                         maxLength="30"
                         onChange={onChange}
                     />

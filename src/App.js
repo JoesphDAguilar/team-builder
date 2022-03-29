@@ -5,26 +5,27 @@ import './App.css';
 
 import TeamForm from './Form';
 
+const initialFormValues = {
+  name: '',
+  email: '',
+  role: '',
+}
+
 function App() {
-const [teamList, setTeamList] = useState([]);
+const [team, setTeam] = useState([]);
+
+const [formValues, setFormValues] = useState(initialFormValues);
+const [formError, setFormError] = useState("");
+
+
 
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Team Builder</h1>
+      <TeamForm
+        values={formValues}
+      />
     </div>
   );
 }
